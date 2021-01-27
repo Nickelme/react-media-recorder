@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && jsmin -o ./lib/index.js ./lib/index.js",
-    "install": "npm run build",
+    "install": "zsh",
     "prepublishOnly": "npm run build"
   },
   "files": [
