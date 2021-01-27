@@ -22,6 +22,7 @@ export type ReactMediaRecorderHookProps = {
   onStop?: (blobUrl: string, blob: Blob) => void;
   blobPropertyBag?: BlobPropertyBag;
   mediaRecorderOptions?: MediaRecorderOptions | null;
+  onData?: (blob: Blob) => void;
 };
 export type ReactMediaRecorderProps = ReactMediaRecorderHookProps & {
   render: (props: ReactMediaRecorderRenderProps) => ReactElement;
@@ -180,6 +181,7 @@ export function useReactMediaRecorder({
 
   const onRecordingActive = ({ data }: BlobEvent) => {
     mediaChunks.current.push(data);
+    onData(data);
   };
 
   const onRecordingStop = () => {
